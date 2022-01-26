@@ -1,30 +1,11 @@
 const themes = [
-  '49ers',
-  'amber',
-  'autumn',
-  'china',
-  'cola',
-  'dark',
   'default',
-  'europe',
-  'fire',
-  'green',
-  'ice',
-  'matrix',
-  'monokai',
-  'pepsi',
-  'pink',
-  'red',
-  'summer',
-  'usa',
-  'white',
-  'winter',
 ].sort((a, b) => a - b);
 
 var config = {
   title: '',
   theme: 'default',
-  to: new Date((new Date()).getFullYear(), (new Date()).getMonth() + 1, (new Date).getDate()),
+  to: new Date(2022,1,15,23,59),
   finishedText: '00:00:00',
   finishedTheme: 'summer',
   dateFormat: 'LLLL',
@@ -67,37 +48,7 @@ function previousTheme() {
   setTheme(themes[index]);
 }
 
-document.onkeydown = function(e) {
-  e = e || window.event;
-  var shift = e.shiftKey;
-  switch(e.keyCode) {
-    case 37:
-      // left arrow
-      nextTheme();
-      break;
-    case 38:
-      // up arrow
-      if (shift) {
-        config.to.setDate(config.to.getDate() + 1);
-      } else {
-        config.to.setHours(config.to.getHours() + 1);
-      }
-      break;
-    case 39:
-      // right arrow
-      nextTheme();
-      break;
-    case 40:
-      // down arrow
-      if (shift) {
-        config.to.setDate(config.to.getDate() - 1);
-      } else {
-        config.to.setHours(config.to.getHours() - 1);
-      }
-      break;
-  }
-  return true;
-}
+
 
 setTheme(config.theme);
 moment.locale(config.locale);

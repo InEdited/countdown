@@ -3,7 +3,7 @@ const themes = [
 ].sort((a, b) => a - b);
 
 var config = {
-  title: '',
+  title: 'Countdown till Zhongli leaves and Marwa loses her mind',
   theme: 'default',
   to: new Date(2022,1,15,23,59),
   finishedText: '00:00:00',
@@ -27,7 +27,7 @@ if (params.get('to')) {
 // set theme
 function setTheme(name) {
   config.theme = name;
-  document.body.className = 'theme-' + name;
+  //document.body.className = 'theme-' + name;
 }
 function nextTheme() {
   var index = themes.indexOf(config.theme);
@@ -60,15 +60,6 @@ if (config.title) {
 }
 document.getElementById('target').innerHTML = moment(config.to).format(config.dateFormat);
 
-var headerElm = document.body.querySelector('body > header');
-for(var i = 0; i < themes.length; i++) {
-  var themeName = themes[i];
-  var a = document.createElement('a');
-  var link = document.createTextNode(themeName);
-  a.appendChild(link);
-  a.addEventListener('click', setTheme.bind(this, themeName));
-  headerElm.appendChild(a);
-}
 
 setInterval(() => {
   var now = moment();
